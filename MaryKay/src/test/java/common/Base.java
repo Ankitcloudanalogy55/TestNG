@@ -17,7 +17,8 @@ public class Base {
 
 		public static WebDriver driver;
 		public static Properties config = new Properties();
-		public static Properties loc = new Properties();
+		public static Properties PE_loc = new Properties();
+		public static Properties US_loc = new Properties();
 		public static FileReader fr;
 		public static FileReader fr1;
 			
@@ -27,9 +28,11 @@ public class Base {
 			
 			if(driver==null) {
 				FileReader fr = new FileReader(System.getProperty("user.dir")+"\\src\\test\\resources\\configfiles\\config.properties");
-				FileReader fr1 = new FileReader(System.getProperty("user.dir")+"\\src\\test\\resources\\configfiles\\locators.properties");
+				FileReader PE = new FileReader(System.getProperty("user.dir")+"\\src\\test\\resources\\configfiles\\PE_Locators.properties");
+				FileReader US = new FileReader(System.getProperty("user.dir")+"\\src\\test\\resources\\configfiles\\US_Locators.properties");
 				config.load(fr);
-				loc.load(fr1);
+				PE_loc.load(PE);
+				US_loc.load(US);
 			}
 			
 			if(config.getProperty("browser").equalsIgnoreCase("chrome")) {
@@ -61,8 +64,8 @@ public class Base {
 		@AfterSuite
 		public void closingBrowser() throws InterruptedException {
 //			Thread.sleep(15000);
-			driver.quit();
-			System.out.println("BROWSER CLOSED");
+//			driver.quit();
+//			System.out.println("BROWSER CLOSED");
 		}
 	}
 

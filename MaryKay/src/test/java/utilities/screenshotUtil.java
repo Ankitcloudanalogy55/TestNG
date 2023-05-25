@@ -13,7 +13,7 @@ public class screenshotUtil extends Base{
 
 	public void getScreenshot() throws IOException {
 		    Date currentdate = new Date();
-	        String screenshotfilename = currentdate.toString().replace(" ", "-").replace(":", "-");
+		    String screenshotfilename = currentdate.toLocaleString().replace("/", "-").replace(":", "-");
 	        System.out.println(screenshotfilename);
 	        File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	        FileUtils.copyFile(screenshotFile, new File(System.getProperty("user.dir")+"/screenshot/"+screenshotfilename+".png"));
